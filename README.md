@@ -51,5 +51,5 @@
     })(document, window);
 ```
 > 建议页面导航采用flex布局，高度固定，宽度自适应
-- 方案二： 直接在sass初始化文件中设置html的根字体大小 html{font-size:100/(750/100)vw}
+- 方案二： 直接在sass初始化文件中设置html的根字体大小 html{font-size:100vw/(750/100);}
 
