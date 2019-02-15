@@ -1,6 +1,6 @@
 ### 关于移动端开发问题总结
 
-#### viewport模板
+#### viewport模板-通用
 ```
 <!DOCTYPE html>
 <html lang="en">
