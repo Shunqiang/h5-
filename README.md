@@ -1,6 +1,11 @@
 ### 关于移动端开发问题总结
 
-#### viewport模板-通用
+#### 1.meta基础知识
+- width viewport 宽度
+- initial-scale 初始缩放比例
+- user-scalable 是否允许缩放
+
+#### 2.viewport模板-通用
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +28,28 @@
 </body>
 </html>
 ```
-- width viewport 宽度
-- initial-scale 初始缩放比例
-- user-scalable 是否允许缩放
+
+#### 3.手机端页面自适应布局 rem布局
+- 方案一： 直接引入一段js代码
+```
+(function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'onorientationchange' in window ? 'onorientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if(clientWidth>=750){
+                    docEl.style.fontSize = '100px';
+                }else{
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                }
+            };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+```
+> 建议页面导航采用flex布局，高度固定，宽度自适应
+- 方案二： 直接在sass初始化文件中设置html的根字体大小 html{font-size:}
+
